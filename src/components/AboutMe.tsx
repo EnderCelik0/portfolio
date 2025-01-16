@@ -48,7 +48,7 @@ export default function AboutMe() {
                 <Linkedin size={24} />
               </div>
             </a>
-            <TooltipProvider>
+            <TooltipProvider delayDuration={0}>
               <Tooltip>
                 <TooltipTrigger>
                   <div className="h text-primary transition-all duration-200 hover:rotate-12 hover:scale-110 hover:text-primary/80">
@@ -63,7 +63,7 @@ export default function AboutMe() {
           </div>
         </div>
         <div>
-          <p className="text-sm text-muted-foreground">{aboutMe.description}</p>
+          <p className="text-md text-muted-foreground">{aboutMe.description}</p>
         </div>
       </div>
     </section>

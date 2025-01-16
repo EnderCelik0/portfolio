@@ -1,7 +1,11 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import Cammegh1 from "../assets/cammegh/Cammegh (1).png";
+import Cammegh from "../assets/cammegh/Cammegh (1).png";
+import Motor from "../assets/motor-config.png";
+import Trunk from "../assets/trunk-config.png";
+import Watch from "../assets/watch-config.png";
+import HeadingChip from "./ui/heading-chip";
 
 export function ExpandableCardDemo() {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
@@ -28,6 +32,13 @@ export function ExpandableCardDemo() {
   }, [active]);
 
   useOutsideClick(ref, () => setActive(null));
+
+  const animateCards = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 30 },
+    transition: { duration: 0.3 },
+  };
 
   return (
     <>
@@ -114,7 +125,7 @@ export function ExpandableCardDemo() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="flex h-40 flex-col items-start gap-4 overflow-auto pb-10 text-xs text-neutral-600 [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] dark:text-neutral-400 md:h-fit md:text-sm lg:text-base"
+                    className="flex h-40 flex-col items-start gap-4 overflow-auto pb-10 text-xs text-neutral-600 [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] dark:text-neutral-400 md:h-fit md:text-sm lg:text-base"
                   >
                     {typeof active.content === "function"
                       ? active.content()
@@ -126,42 +137,60 @@ export function ExpandableCardDemo() {
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="mx-auto grid w-full max-w-2xl grid-cols-1 items-start gap-4 md:grid-cols-2">
-        {cards.map((card, index) => (
-          <motion.div
-            layoutId={`card-${card.title}-${id}`}
-            key={card.title}
-            onClick={() => setActive(card)}
-            className="hover:bg-primary/30 flex cursor-pointer flex-col rounded-xl p-4 transition-colors duration-200 dark:hover:bg-accent/95"
-          >
-            <div className="flex w-full flex-col gap-4">
-              <motion.div layoutId={`image-${card.title}-${id}`}>
-                <img
-                  width={100}
-                  height={100}
-                  src={card.src}
-                  alt={card.title}
-                  className="h-60 w-full rounded-lg object-cover object-top"
-                />
-              </motion.div>
-              <div className="flex flex-col items-center justify-center">
-                <motion.h3
-                  layoutId={`title-${card.title}-${id}`}
-                  className="text-center text-base font-medium text-neutral-800 dark:text-neutral-200 md:text-left"
-                >
-                  {card.title}
-                </motion.h3>
-                <motion.p
-                  layoutId={`description-${card.description}-${id}`}
-                  className="text-center text-base text-neutral-600 dark:text-neutral-400 md:text-left"
-                >
-                  {card.description}
-                </motion.p>
+      <div className="flex flex-col items-center gap-6">
+        <HeadingChip textColor="text-primary/80" bgColor="bg-primary/10">
+          Projects
+        </HeadingChip>
+        <ul className="mx-auto grid w-full grid-cols-1 items-start gap-4 md:grid-cols-2">
+          {cards.map((card, index) => (
+            <motion.div
+              layoutId={`card-${card.title}-${id}`}
+              key={card.title}
+              onClick={() => setActive(card)}
+              initial={{
+                opacity: 0,
+                x: index % 2 === 0 ? -50 : 50,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.2,
+                ease: "easeOut",
+              }}
+              className="flex cursor-pointer flex-col rounded-xl transition-colors duration-200 hover:bg-primary/30 dark:hover:bg-accent/95"
+            >
+              <div className="flex w-full flex-col gap-4">
+                <motion.div layoutId={`image-${card.title}-${id}`}>
+                  <img
+                    width={100}
+                    height={100}
+                    src={card.src}
+                    alt={card.title}
+                    className="h-60 w-full rounded-lg object-cover object-top"
+                  />
+                </motion.div>
+                <div className="flex flex-col items-center justify-center">
+                  <motion.h3
+                    layoutId={`title-${card.title}-${id}`}
+                    className="text-center text-base font-medium text-neutral-800 dark:text-neutral-200 md:text-left"
+                  >
+                    {card.title}
+                  </motion.h3>
+                  <motion.p
+                    layoutId={`description-${card.description}-${id}`}
+                    className="text-center text-base text-neutral-600 dark:text-neutral-400 md:text-left"
+                  >
+                    {card.description}
+                  </motion.p>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </ul>
+            </motion.div>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
@@ -201,23 +230,111 @@ export const CloseIcon = () => {
 
 const cards = [
   {
-    description: "Configurator",
+    description: "Roulette Configurator",
     title: "Cammegh Roulette Configurator",
-    src: Cammegh1,
+    src: Cammegh,
     ctaText: "Visit",
     ctaLink: "https://cmghtest.netlify.app/",
     content: () => {
       return (
-        <p>
-          The Cammegh Roulette Configurator is a cutting-edge tool designed to
-          revolutionize the gaming industry. As a key contributor to this
-          project, I had the opportunity to work on a platform that allows users
-          to customize and configure roulette games with unparalleled precision.
-          This innovative tool enables casinos and gaming operators to tailor
-          their roulette offerings to specific markets and player preferences,
-          ensuring a unique gaming experience for patrons.
-        </p>
+        <ul className="flex flex-col gap-4">
+          {cardFeatures.roulette.map((feature) => (
+            <li className="flex gap-2">
+              <span className="text-primary">-</span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+      );
+    },
+  },
+  {
+    description: "Watch Configurator",
+    title: "Watch Configurator",
+    src: Watch,
+    ctaText: "Visit",
+    ctaLink: "https://watchconfeegurator.netlify.app/",
+    features: [
+      "Customize the watch face with a variety of styles and colors",
+      "Add a personalized message to the watch face",
+      "Choose the watch strap and band color",
+      "Preview the watch before finalizing the design",
+    ],
+    content: () => {
+      return (
+        <ul className="flex flex-col gap-4">
+          {cardFeatures.watch.map((feature) => (
+            <li className="">
+              <span className="text-primary">-</span> {feature}
+            </li>
+          ))}
+        </ul>
+      );
+    },
+  },
+  {
+    description: "Motorcycle Configurator",
+    title: "Motorcycle Configurator",
+    src: Motor,
+    ctaText: "Visit",
+    ctaLink: "https://codeoconfigurator.netlify.app/",
+    content: () => {
+      return (
+        <ul className="flex flex-col gap-4">
+          {cardFeatures.motorcycle.map((feature) => (
+            <li className="">
+              <span className="text-primary">-</span> {feature}
+            </li>
+          ))}
+        </ul>
+      );
+    },
+  },
+  {
+    description: "Luxury Trunk Configurator",
+    title: "Luxury Trunk Configurator",
+    src: Trunk,
+    ctaText: "Visit",
+    ctaLink: "https://luxurytrunkconfeegurator.netlify.app/",
+    content: () => {
+      return (
+        <ul className="flex flex-col gap-4">
+          {cardFeatures.trunk.map((feature) => (
+            <li className="">
+              <span className="text-primary">-</span> {feature}
+            </li>
+          ))}
+        </ul>
       );
     },
   },
 ];
+
+const cardFeatures = {
+  roulette: [
+    "Customize the roulette wheel with a variety of materials and colors",
+    "You can mail the roulette wheel link to yourself",
+    "Automatically generate custom roulette wheel when entering with the custom link",
+    "You can take a screenshot of the roulette wheel and share it with your friends",
+    "Adjust the settings of the roulette wheel quality",
+    "Rule based material selection",
+    "Dynamic version connected with API",
+    "Responsive design",
+  ],
+  watch: [
+    "Customize the watch face with a variety of styles and colors",
+    "Add a personalized message to the watch face",
+    "Choose the watch strap and band color",
+    "Preview the watch before finalizing the design",
+  ],
+  motorcycle: [
+    "Customize the motorcycle with a variety of styles and colors",
+    "Add a personalized message to the motorcycle",
+    "Choose the motorcycle size",
+    "Preview the motorcycle before finalizing the design",
+  ],
+  trunk: [
+    "Customize the motorcycle parts with a variety of materials and colors",
+    "Preview the trunk before finalizing the design",
+  ],
+};
