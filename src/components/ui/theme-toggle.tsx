@@ -14,7 +14,7 @@ export function ThemeToggle() {
   return (
     <div
       onClick={handleThemeChange}
-      className="flex aspect-square h-full items-center space-x-2 rounded-full p-2 transition-colors duration-200 hover:bg-primary/50"
+      className="fixed bottom-3 right-3 flex aspect-square h-8 w-8 items-center justify-center space-x-2 rounded-full bg-primary/50 p-2 transition-colors duration-200"
     >
       {theme === "dark" ? (
         <AnimatePresence>
@@ -29,7 +29,7 @@ export function ThemeToggle() {
               bounce: 0.2,
             }}
           >
-            <Sun className="w-4" />
+            <Sun className="w-4 text-foreground" />
           </motion.div>
         </AnimatePresence>
       ) : null}

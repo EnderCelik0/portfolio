@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function WorkExperience() {
   return (
     <div className="flex flex-col gap-6">
-      <HeadingChip textColor="text-orange-600/80" bgColor="bg-orange-500/10">
+      <HeadingChip textColor="text-primary" bgColor="bg-primary/10">
         Work Experience
       </HeadingChip>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -13,19 +13,22 @@ export default function WorkExperience() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.3 }}
-            className={`flex flex-col gap-4 rounded-xl border border-orange-500 p-4 ${
+            className={`flex flex-col gap-4 rounded-xl border border-primary p-4 ${
               experience.isCurrent ? "" : ""
             }`}
+            key={index}
           >
-            <div className="flex flex-col justify-between md:justify-between lg:flex-row">
-              <h3 className="text-lg font-bold text-white">
+            <div className="flex flex-col items-center justify-between md:justify-between lg:flex-row">
+              <h3 className="max-w-64 truncate text-lg font-bold text-foreground">
                 {experience.title}
               </h3>
-              <p className="text-sm font-bold text-neutral-500">
+              <p className="text-sm font-bold text-muted-foreground">
                 {experience.company} ({experience.date})
               </p>
             </div>
-            <p className="text-sm text-neutral-300">{experience.description}</p>
+            <p className="text-sm text-muted-foreground">
+              {experience.description}
+            </p>
           </motion.div>
         ))}
       </div>

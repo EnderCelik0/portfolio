@@ -33,13 +33,6 @@ export function ExpandableCardDemo() {
 
   useOutsideClick(ref, () => setActive(null));
 
-  const animateCards = {
-    initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 30 },
-    transition: { duration: 0.3 },
-  };
-
   return (
     <>
       <AnimatePresence>
@@ -86,7 +79,7 @@ export function ExpandableCardDemo() {
                   height={200}
                   src={active.src}
                   alt={active.title}
-                  className="h-80 w-full object-cover object-top sm:rounded-tl-lg sm:rounded-tr-lg lg:h-80"
+                  className="h-80 w-full object-cover sm:rounded-tl-lg sm:rounded-tr-lg lg:h-80"
                 />
               </motion.div>
 
@@ -138,7 +131,7 @@ export function ExpandableCardDemo() {
         ) : null}
       </AnimatePresence>
       <div className="flex flex-col items-center gap-6">
-        <HeadingChip textColor="text-primary/80" bgColor="bg-primary/10">
+        <HeadingChip textColor="text-primary" bgColor="bg-primary/10">
           Projects
         </HeadingChip>
         <ul className="mx-auto grid w-full grid-cols-1 items-start gap-4 md:grid-cols-2">
@@ -160,7 +153,7 @@ export function ExpandableCardDemo() {
                 delay: index * 0.2,
                 ease: "easeOut",
               }}
-              className="flex cursor-pointer flex-col rounded-xl transition-colors duration-200 hover:bg-primary/30 dark:hover:bg-accent/95"
+              className="flex cursor-pointer flex-col rounded-xl p-2 transition-colors duration-200 hover:bg-primary/30"
             >
               <div className="flex w-full flex-col gap-4">
                 <motion.div layoutId={`image-${card.title}-${id}`}>
@@ -264,7 +257,7 @@ const cards = [
       return (
         <ul className="flex flex-col gap-4">
           {cardFeatures.watch.map((feature) => (
-            <li className="">
+            <li key={feature}>
               <span className="text-primary">-</span> {feature}
             </li>
           ))}
@@ -282,7 +275,7 @@ const cards = [
       return (
         <ul className="flex flex-col gap-4">
           {cardFeatures.motorcycle.map((feature) => (
-            <li className="">
+            <li key={feature}>
               <span className="text-primary">-</span> {feature}
             </li>
           ))}
@@ -300,7 +293,7 @@ const cards = [
       return (
         <ul className="flex flex-col gap-4">
           {cardFeatures.trunk.map((feature) => (
-            <li className="">
+            <li key={feature}>
               <span className="text-primary">-</span> {feature}
             </li>
           ))}
