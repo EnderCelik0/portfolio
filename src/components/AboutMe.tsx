@@ -10,10 +10,8 @@ import {
 import AnimatedText from "./ui/animated-text.js";
 
 export default function AboutMe() {
-  const aboutMeText = aboutMe.description.split("");
-
   return (
-    <section className="rounded-md border-2 border-foreground/50 p-6">
+    <section className="rounded-md border-2 border-primary/50 p-6">
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
@@ -80,8 +78,8 @@ export default function AboutMe() {
             </TooltipProvider>
           </div>
         </div>
-        <div className="flex flex-wrap">
-          <AnimatedText text={aboutMe.description} delay={0.01} />
+        <div className="flex flex-wrap text-muted-foreground">
+          <AnimatedText text={aboutMe.description} />
         </div>
       </div>
     </section>

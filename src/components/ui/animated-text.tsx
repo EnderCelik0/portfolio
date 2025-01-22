@@ -2,12 +2,14 @@ import { motion, Variants } from "framer-motion";
 
 export default function AnimatedText({
   text,
-  delay,
+  delay = 0.01,
 }: {
   text: string;
   delay: number;
 }) {
-  const words = text.split("");
+  const words: string[] = text.split("  ");
+
+  console.log(words);
 
   const textVariants: Variants = {
     offscreen: {
@@ -23,16 +25,20 @@ export default function AnimatedText({
   return (
     <>
       {words.map((word, index) => (
-        <motion.span
-          variants={textVariants}
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true }}
-          transition={{ delay: index * delay }}
-          key={index}
-        >
-          {word}
-        </motion.span>
+        <span key={index}>
+          {word.split("").map((character, index) => (
+            <motion.span
+              variants={textVariants}
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true }}
+              transition={{ delay: index * delay }}
+              key={index}
+            >
+              {character}
+            </motion.span>
+          ))}
+        </span>
       ))}
     </>
   );
