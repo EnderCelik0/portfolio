@@ -75,11 +75,9 @@ export function ExpandableCardDemo() {
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 <img
-                  width={200}
-                  height={200}
                   src={active.src}
                   alt={active.title}
-                  className="h-80 w-full object-cover sm:rounded-tl-lg sm:rounded-tr-lg lg:h-80"
+                  className="h-80 w-full object-cover object-top sm:rounded-tl-lg sm:rounded-tr-lg lg:h-80"
                 />
               </motion.div>
 
@@ -118,7 +116,7 @@ export function ExpandableCardDemo() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="flex h-40 flex-col items-start gap-4 overflow-auto pb-10 text-xs text-neutral-600 [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] dark:text-neutral-400 md:h-fit md:text-sm lg:text-base"
+                    className="flex h-40 flex-col items-start gap-4 overflow-auto pb-10 text-xs text-neutral-600 [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] dark:text-neutral-400 md:h-fit md:text-sm lg:text-base"
                   >
                     {typeof active.content === "function"
                       ? active.content()
@@ -130,60 +128,47 @@ export function ExpandableCardDemo() {
           </div>
         ) : null}
       </AnimatePresence>
-      <div className="flex flex-col items-center gap-6">
+      <div className="flex items-center justify-center">
         <HeadingChip textColor="text-primary" bgColor="bg-primary/10">
           Projects
         </HeadingChip>
-        <ul className="mx-auto grid w-full grid-cols-1 items-start gap-4 md:grid-cols-2">
-          {cards.map((card, index) => (
-            <motion.div
-              layoutId={`card-${card.title}-${id}`}
-              key={card.title}
-              onClick={() => setActive(card)}
-              initial={{
-                opacity: 0,
-                x: index % 2 === 0 ? -50 : 50,
-              }}
-              animate={{
-                opacity: 1,
-                x: 0,
-              }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.2,
-                ease: "easeOut",
-              }}
-              className="flex cursor-pointer flex-col rounded-xl p-2 transition-colors duration-200 hover:bg-primary/30"
-            >
-              <div className="flex w-full flex-col gap-4">
-                <motion.div layoutId={`image-${card.title}-${id}`}>
-                  <img
-                    width={100}
-                    height={100}
-                    src={card.src}
-                    alt={card.title}
-                    className="h-60 w-full rounded-lg object-cover object-top"
-                  />
-                </motion.div>
-                <div className="flex flex-col items-center justify-center">
-                  <motion.h3
-                    layoutId={`title-${card.title}-${id}`}
-                    className="text-center text-base font-medium text-neutral-800 dark:text-neutral-200 md:text-left"
-                  >
-                    {card.title}
-                  </motion.h3>
-                  <motion.p
-                    layoutId={`description-${card.description}-${id}`}
-                    className="text-center text-base text-neutral-600 dark:text-neutral-400 md:text-left"
-                  >
-                    {card.description}
-                  </motion.p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </ul>
       </div>
+      <ul className="mx-auto grid w-full max-w-5xl grid-cols-1 items-start gap-4 md:grid-cols-2">
+        {cards.map((card) => (
+          <motion.div
+            layoutId={`card-${card.title}-${id}`}
+            key={card.title}
+            onClick={() => setActive(card)}
+            className="flex cursor-pointer flex-col rounded-xl p-4 transition-colors hover:bg-muted"
+          >
+            <div className="flex w-full flex-col gap-4">
+              <motion.div layoutId={`image-${card.title}-${id}`}>
+                <img
+                  width={100}
+                  height={100}
+                  src={card.src}
+                  alt={card.title}
+                  className="h-60 w-full rounded-lg object-cover object-top"
+                />
+              </motion.div>
+              <div className="flex flex-col items-center justify-center">
+                <motion.h3
+                  layoutId={`title-${card.title}-${id}`}
+                  className="text-center text-base font-medium text-neutral-800 dark:text-neutral-200 md:text-left"
+                >
+                  {card.title}
+                </motion.h3>
+                <motion.p
+                  layoutId={`description-${card.description}-${id}`}
+                  className="text-center text-base text-neutral-600 dark:text-neutral-400 md:text-left"
+                >
+                  {card.description}
+                </motion.p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </ul>
     </>
   );
 }
@@ -222,25 +207,25 @@ export const CloseIcon = () => {
 };
 
 const cards = [
-  {
-    description: "Roulette Configurator",
-    title: "Cammegh Roulette Configurator",
-    src: Cammegh,
-    ctaText: "Visit",
-    ctaLink: "https://cmghtest.netlify.app/",
-    content: () => {
-      return (
-        <ul className="flex flex-col gap-4">
-          {cardFeatures.roulette.map((feature) => (
-            <li className="flex gap-2">
-              <span className="text-primary">-</span>
-              {feature}
-            </li>
-          ))}
-        </ul>
-      );
-    },
-  },
+  // {
+  //   description: "Roulette Configurator",
+  //   title: "Cammegh Roulette Configurator",
+  //   src: Cammegh,
+  //   ctaText: "Visit",
+  //   ctaLink: "https://cmghtest.netlify.app/",
+  //   content: () => {
+  //     return (
+  //       <ul className="flex flex-col gap-4">
+  //         {cardFeatures.roulette.map((feature) => (
+  //           <li className="flex gap-2">
+  //             <span className="text-primary">-</span>
+  //             {feature}
+  //           </li>
+  //         ))}
+  //       </ul>
+  //     );
+  //   },
+  // },
   {
     description: "Watch Configurator",
     title: "Watch Configurator",

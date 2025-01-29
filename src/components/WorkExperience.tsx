@@ -7,19 +7,18 @@ export default function WorkExperience() {
       <HeadingChip textColor="text-primary" bgColor="bg-primary/10">
         Work Experience
       </HeadingChip>
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6">
         {workExperience.map((experience, index) => (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.3 }}
             className={`flex flex-col gap-4 rounded-xl border border-primary p-4 ${
-              experience.isCurrent ? "" : ""
-            }`}
+            experience.isCurrent ? "" : "" }`}
             key={index}
           >
-            <div className="flex flex-col items-center justify-between md:justify-between lg:flex-row">
-              <h3 className="max-w-64 truncate text-lg font-bold text-foreground">
+            <div className="flex flex-col items-center justify-between sm:flex-row sm:justify-between">
+              <h3 className="text-lg font-bold text-foreground">
                 {experience.title}
               </h3>
               <p className="text-sm font-bold text-muted-foreground">
@@ -43,20 +42,12 @@ const workExperience = [
     date: "June 2023 - Oct 2023",
     isCurrent: false,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-  },
-  {
-    title: "Part-time Software Developer",
-    company: "Codeo",
-    date: "Oct 2023 - Feb 2024",
-    isCurrent: false,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      "During my internship i started a real project that our customer wants. I built a frontend for the 3D roulette configurator that in the given mockup provided by the customer. Then i integrated the 3D model of roulette table that 3D artist designed in the Unity. Then connected Unity and React with the unity-webgl library. ",
   },
   {
     title: "Software Developer",
     company: "Codeo",
-    date: "Feb 2024 - Current ",
+    date: "Feb 2024 - Current",
     isCurrent: true,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
