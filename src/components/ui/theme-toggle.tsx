@@ -15,10 +15,10 @@ export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
   const { themeColor, setThemeColor } = useThemeContext();
 
-  const colors: ThemeColors[] = ["Zinc", "Orange", "Green", "Blue", "Violet"];
+  const colors: ThemeColors[] = ["Orange", "Green", "Blue", "Violet"];
 
   return (
-    <div className="fixed bottom-3 right-3 flex gap-2">
+    <div className="fixed bottom-3 right-6 flex gap-2">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon" className="bg-primary/50">
@@ -39,10 +39,9 @@ export function ThemeToggle() {
       </DropdownMenu>
 
       <Button
-        variant="outline"
         size="icon"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        className="bg-primary/50"
+        className="bg-primary/70"
       >
         <AnimatePresence mode="wait" initial={false}>
           {theme === "light" ? (

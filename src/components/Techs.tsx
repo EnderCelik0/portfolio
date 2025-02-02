@@ -91,7 +91,7 @@ export default function Techs() {
       href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
     },
     {
-      name: "Motion",
+      name: "Motion (Formerly Framer Motion)",
       // descriptions: (
       //   <AnimatedText
       //     text="1111111111111111111111111111111111111"

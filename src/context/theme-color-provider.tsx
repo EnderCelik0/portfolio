@@ -9,29 +9,36 @@ const ThemeContext = createContext<ThemeColorStateProps>(
   {} as ThemeColorStateProps,
 );
 
+const DEFAULT_COLOR: ThemeColors = "Violet";
+
 export default function ThemeDataProvider({ children }: ThemeProviderProps) {
-  const getSavetThemeColor = () => {
+  const getSavedThemeColor = (): ThemeColors => {
     try {
-      return (localStorage.getItem("theme-color") as ThemeColors) || "Violet";
+      const saved = localStorage.getItem("theme-color") as ThemeColors;
+      return saved || DEFAULT_COLOR;
     } catch {
-      return "Violet";
+      return DEFAULT_COLOR;
     }
   };
 
-  const [themeColor, setThemeColor] = useState<ThemeColors>(
-    getSavetThemeColor() as ThemeColors,
-  );
-
+  const [themeColor, setThemeColor] =
+    useState<ThemeColors>(getSavedThemeColor());
   const [isMounted, setIsMounted] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
-    localStorage.setItem("theme-color", themeColor);
-    setGlobalColorTheme(theme as "light" | "dark", themeColor);
     if (!isMounted) {
       setIsMounted(true);
+      return;
     }
-  }, [theme, themeColor]);
+
+    try {
+      localStorage.setItem("theme-color", themeColor);
+      setGlobalColorTheme(theme as "light" | "dark", themeColor);
+    } catch (error) {
+      console.error("Error setting theme color:", error);
+    }
+  }, [theme, themeColor, isMounted]);
 
   if (!isMounted) {
     return null;

@@ -1,5 +1,4 @@
 import { Github, Globe, Linkedin } from "lucide-react";
-import { aboutMe } from "../content/about-me.js";
 import {
   Tooltip,
   TooltipContent,
@@ -93,7 +92,7 @@ export default function AboutMe() {
             </TooltipProvider>
           </div>
         </div>
-        <div className="flex flex-wrap text-muted-foreground">
+        <div className="flex flex-wrap text-muted-foreground text-">
           <AnimatedText text={aboutMe.description} delay={0.01} />
         </div>
       </div>

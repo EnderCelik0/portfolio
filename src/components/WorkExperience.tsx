@@ -1,5 +1,19 @@
 import HeadingChip from "./ui/heading-chip";
-import { motion } from "framer-motion";
+import ExperienceCard from "./ui/experience";
+
+export type Project = {
+  title: string;
+  technologies: string[];
+  description: string;
+};
+
+export type Experience = {
+  title: string;
+  company: string;
+  date: string;
+  isCurrent: boolean;
+  projects: Project[];
+};
 
 export default function WorkExperience() {
   return (
@@ -8,27 +22,8 @@ export default function WorkExperience() {
         Work Experience
       </HeadingChip>
       <div className="grid grid-cols-1 gap-6">
-        {workExperience.map((experience, index) => (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.3 }}
-            className={`flex flex-col gap-4 rounded-xl border border-primary p-4 ${
-            experience.isCurrent ? "" : "" }`}
-            key={index}
-          >
-            <div className="flex flex-col items-center justify-between sm:flex-row sm:justify-between">
-              <h3 className="text-lg font-bold text-foreground">
-                {experience.title}
-              </h3>
-              <p className="text-sm font-bold text-muted-foreground">
-                {experience.company} ({experience.date})
-              </p>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              {experience.description}
-            </p>
-          </motion.div>
+        {workExperience.map((experience: Experience, index: number) => (
+          <ExperienceCard key={index} experience={experience} index={index} />
         ))}
       </div>
     </div>
@@ -41,15 +36,119 @@ const workExperience = [
     company: "Codeo",
     date: "June 2023 - Oct 2023",
     isCurrent: false,
-    description:
-      "During my internship i started a real project that our customer wants. I built a frontend for the 3D roulette configurator that in the given mockup provided by the customer. Then i integrated the 3D model of roulette table that 3D artist designed in the Unity. Then connected Unity and React with the unity-webgl library. ",
+    projects: [
+      {
+        title: "Static 3D Roulette Configurator",
+        technologies: ["React", "Unity-WebGL", "Vanilla CSS", "React Router"],
+        description: (
+          <ul className="list-disc pl-5">
+            <li>
+              Developed a static responsive UI for a 3D roulette configurator
+              based on customer requirements.
+            </li>
+            <li>
+              Integrated Unity built 3D roulette model with React using
+              unity-webgl library. Added a material change feature with the
+              given materials.
+            </li>
+            <li>Camera angle change feature with the given cameras.</li>
+            <li>High Quality screenshots of product.</li>
+            <li>
+              Link sharing functionality allowing users to share the
+              configurator with others.
+            </li>
+            <li>
+              Email your custom configurator to the customer with the given
+              email template (EmailJS).
+            </li>
+          </ul>
+        ),
+      },
+    ],
   },
+
   {
     title: "Software Developer",
     company: "Codeo",
     date: "Feb 2024 - Current",
     isCurrent: true,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    projects: [
+      {
+        title: "Configurator Dashboard",
+        technologies: ["React", "TailwindCSS", "TypeScript", "React Query"],
+        description: (
+          <ul className="list-disc pl-5">
+            <li>
+              Built an administrative dashboard for managing multiple
+              configurator products.
+            </li>
+            <li>
+              User can add multiple configurators, edit them, delete them, add
+              features in their products, add new materials, add new 3D models
+              to products, add cameras, add dynamic rules and actions and much
+              more.
+            </li>
+            <li>
+              User can chose options thumbnail for every option. Select if
+              feature single or multiple select. Select feature thumbnail size
+              (2x1, 1x1).
+            </li>
+            <li>
+              Real-time updates using React Query for efficient data fetching
+              and caching.
+            </li>
+            <li>
+              Dynamic nested rule builder and action adding with the given
+              options.
+            </li>
+          </ul>
+        ),
+      },
+
+      {
+        title: "Dynamic 3D Roulette Configurator",
+        technologies: ["React", "Unity-WebGL", "Vanilla CSS", "React Router"],
+        description: (
+          <ul className="list-disc pl-5">
+            <li>
+              While i was working on the configurator dashboard, i also worked
+              on the dynamic 3D roulette configurator.
+            </li>
+            <li>
+              At first i created the roulette configurator on the dashboard.
+            </li>
+            <li>
+              Then i added features, feature option groups and feature options
+              along with option thumbnails.
+            </li>
+            <li>
+              Then i added dynamic nested rules and actions with the given
+              options.User can select which feature, option or option groups
+              hide or disable when the rule triggers.
+            </li>
+            <li>
+              After finishing the dashboard i implemented the API calls in
+              frontend to display the data in the configurator.
+            </li>
+          </ul>
+        ),
+      },
+      {
+        title: "Static POC Configurator",
+        technologies: ["React", "Unity-WebGL", "Vanilla CSS", "React Router"],
+        description: (
+          <ul className="list-disc pl-5">
+            <li>
+              In my internship i develop the static roulette configurator as a
+              base template for the POC configurators.
+            </li>
+            <li>
+              If the assets are ready we can use this project to create a
+              configurator POC in a 1 to 2 days.
+            </li>
+          </ul>
+        ),
+      },
+    ],
   },
 ];
