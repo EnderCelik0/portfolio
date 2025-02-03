@@ -70,12 +70,13 @@ const workExperience = [
         description: (
           <ul className="list-disc pl-5">
             <li>
-              In my internship i develop the static roulette configurator as a
-              base template for the POC configurators.
+              I developed the static roulette configurator as a base template
+              for the POC configurators.
             </li>
             <li>
-              If the assets are ready we can use this project to create a
-              configurator POC in a 1 to 2 days.
+              If the 3D model and option thumbnails are ready we can use this
+              project to create a configurator POC in a 1 to 2 days depending
+              extra functionalities that might your configurator need.
             </li>
           </ul>
         ),
