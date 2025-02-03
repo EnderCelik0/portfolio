@@ -64,6 +64,22 @@ const workExperience = [
           </ul>
         ),
       },
+      {
+        title: "Static POC Configurator",
+        technologies: ["React", "Unity-WebGL", "Vanilla CSS", "React Router"],
+        description: (
+          <ul className="list-disc pl-5">
+            <li>
+              In my internship i develop the static roulette configurator as a
+              base template for the POC configurators.
+            </li>
+            <li>
+              If the assets are ready we can use this project to create a
+              configurator POC in a 1 to 2 days.
+            </li>
+          </ul>
+        ),
+      },
     ],
   },
 
@@ -129,22 +145,6 @@ const workExperience = [
             <li>
               After finishing the dashboard i implemented the API calls in
               frontend to display the data in the configurator.
-            </li>
-          </ul>
-        ),
-      },
-      {
-        title: "Static POC Configurator",
-        technologies: ["React", "Unity-WebGL", "Vanilla CSS", "React Router"],
-        description: (
-          <ul className="list-disc pl-5">
-            <li>
-              In my internship i develop the static roulette configurator as a
-              base template for the POC configurators.
-            </li>
-            <li>
-              If the assets are ready we can use this project to create a
-              configurator POC in a 1 to 2 days.
             </li>
           </ul>
         ),
