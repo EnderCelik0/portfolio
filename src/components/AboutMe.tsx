@@ -28,7 +28,7 @@ export default function AboutMe() {
               <img
                 src={aboutMe.profilePic}
                 alt="profile picture"
-                className="h-14 w-14 rounded-full object-cover"
+                className="h-14 w-14 rounded-md object-cover"
               />
             </div>
             <div>
