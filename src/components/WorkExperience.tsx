@@ -1,11 +1,5 @@
 import HeadingChip from "./ui/heading-chip";
-import ExperienceCard from "./ui/experience";
-
-export type Project = {
-  title: string;
-  technologies: string[];
-  description: string;
-};
+import ExperienceCard from "./ui/experience-card";
 
 export type Experience = {
   title: string;
@@ -13,6 +7,11 @@ export type Experience = {
   date: string;
   isCurrent: boolean;
   projects: Project[];
+};
+export type Project = {
+  title: string;
+  technologies: string[];
+  description: string;
 };
 
 export default function WorkExperience() {
@@ -39,9 +38,14 @@ const workExperience = [
     projects: [
       {
         title: "Static 3D Roulette Configurator",
-        technologies: ["React", "Unity-WebGL", "Vanilla CSS", "React Router"],
+        technologies: [
+          "React",
+          "Vanilla CSS",
+          "React Router",
+          "react-unity-webGL",
+        ],
         description: (
-          <ul className="list-disc pl-5">
+          <ul className="list-disc pl-2 md:pl-5 space-y-2">
             <li>
               Developed a static responsive UI for a 3D roulette configurator
               based on customer requirements.
@@ -66,9 +70,14 @@ const workExperience = [
       },
       {
         title: "Static POC Configurator",
-        technologies: ["React", "Unity-WebGL", "Vanilla CSS", "React Router"],
+        technologies: [
+          "React",
+          "Vanilla CSS",
+          "React Router",
+          "react-unity-webGL",
+        ],
         description: (
-          <ul className="list-disc pl-5">
+          <ul className="list-disc pl-2 md:pl-5 space-y-2">
             <li>
               I developed the static roulette configurator as a base template
               for the POC configurators.
@@ -92,9 +101,9 @@ const workExperience = [
     projects: [
       {
         title: "Configurator Dashboard",
-        technologies: ["React", "TailwindCSS", "TypeScript", "React Query"],
+        technologies: ["React", "Tailwind", "TypeScript", "React Query"],
         description: (
-          <ul className="list-disc pl-5">
+          <ul className="list-disc pl-2 md:pl-5 space-y-2">
             <li>
               Built an administrative dashboard for managing multiple
               configurator products.
@@ -124,9 +133,14 @@ const workExperience = [
 
       {
         title: "Dynamic 3D Roulette Configurator",
-        technologies: ["React", "Unity-WebGL", "Vanilla CSS", "React Router"],
+        technologies: [
+          "React",
+          "react-unity-webGL",
+          "Vanilla CSS",
+          "React Router",
+        ],
         description: (
-          <ul className="list-disc pl-5">
+          <ul className="list-disc pl-0 md:pl-5 space-y-2">
             <li>
               While i was working on the configurator dashboard, i also worked
               on the dynamic 3D roulette configurator.

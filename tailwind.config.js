@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily: {
         geist: ["Geist", "sans-serif"],
+        robotoMono: ["Roboto Mono", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

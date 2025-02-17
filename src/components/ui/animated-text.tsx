@@ -9,8 +9,6 @@ export default function AnimatedText({
 }) {
   const words: string[] = text.split("  ");
 
-  console.log(words);
-
   const textVariants: Variants = {
     offscreen: {
       opacity: 0,

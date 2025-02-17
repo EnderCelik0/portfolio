@@ -19,7 +19,8 @@ export default function HeadingChip({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className={cn(
-          `rounded-xl px-4 py-2 text-2xl font-bold ${textColor} ${bgColor} ${className}`,
+          `rounded-xl px-4 py-2 text-2xl font-bold text-center ${textColor} ${bgColor}
+          ${className}`,
         )}
       >
         {children}
