@@ -14,38 +14,38 @@ export default function Techs() {
   const Tech = [
     {
       name: "React",
-      icon: <FaReact className="h-8 w-8 text-primary" />,
+      icon: <FaReact className="h-10 w-10 text-primary" />,
       href: "https://react.dev/",
     },
 
     {
       name: "React Query",
-      icon: <SiReactquery className="h-8 w-8 text-primary" />,
+      icon: <SiReactquery className="h-10 w-10 text-primary" />,
       href: "https://tanstack.com/query/latest",
     },
     {
       name: "React Router",
-      icon: <SiReactrouter className="h-8 w-8 text-primary" />,
+      icon: <SiReactrouter className="h-10 w-10 text-primary" />,
       href: "https://reactrouter.com/",
     },
     {
       name: "Tailwind",
-      icon: <SiTailwindcss className="h-8 w-8 text-primary" />,
+      icon: <SiTailwindcss className="h-10 w-10 text-primary" />,
       href: "https://tailwindcss.com/",
     },
     {
       name: "CSS",
-      icon: <SiCss3 className="h-8 w-8 text-primary" />,
+      icon: <SiCss3 className="h-10 w-10 text-primary" />,
       href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
     },
     {
       name: "shadcn/ui",
       href: "https://ui.shadcn.com/",
-      icon: <SiShadcnui className="h-8 w-8 text-primary" />,
+      icon: <SiShadcnui className="h-10 w-10 text-primary" />,
     },
     {
       name: "Motion",
-      icon: <TbBrandFramerMotion className="h-8 w-8 text-primary" />,
+      icon: <TbBrandFramerMotion className="h-12 w-12 text-primary" />,
       href: "https://motion.dev/docs/react-quick-start",
     },
   ];
@@ -60,9 +60,12 @@ export default function Techs() {
         Technologies & Tools
       </HeadingChip>
       <div className="rounded-lg border-2 border-primary/70 p-6">
-        <div className="flex items-center gap-6 flex-wrap justify-center">
+        <div className="flex items-center gap-8 flex-wrap justify-center md:justify-evenly">
           {Tech.map((tech, index) => (
-            <motion.div className="flex flex-col items-center" key={index}>
+            <motion.div
+              className="flex flex-col items-center gap-3"
+              key={index}
+            >
               <motion.a
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

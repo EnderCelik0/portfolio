@@ -42,7 +42,7 @@ const workExperience = [
           "React",
           "Vanilla CSS",
           "React Router",
-          "react-unity-webGL",
+          "react-unity-webgl",
         ],
         description: (
           <ul className="list-disc pl-2 md:pl-5 space-y-2">
@@ -101,7 +101,13 @@ const workExperience = [
     projects: [
       {
         title: "Configurator Dashboard",
-        technologies: ["React", "Tailwind", "TypeScript", "React Query"],
+        technologies: [
+          "React",
+          "Tailwind",
+          "TypeScript",
+          "React Query",
+          "react-unity-webgl",
+        ],
         description: (
           <ul className="list-disc pl-2 md:pl-5 space-y-2">
             <li>
